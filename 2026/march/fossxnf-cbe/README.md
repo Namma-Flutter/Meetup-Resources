@@ -4,7 +4,7 @@
 
 **Date:** 28th March 2026
 
-**Location:** [iamneo,](https://maps.app.goo.gl/W9vgpNsQ3h4WdfPx7) Coimbatore, Tamil Nadu
+**Location:** [iamneo](https://maps.app.goo.gl/W9vgpNsQ3h4WdfPx7),Coimbatore, Tamil Nadu
 
 **Type:** Collaborative Event
 
@@ -25,5 +25,5 @@ A collaborative event organized by [FOSS United Coimbatore](https://fossunited.o
 
 ## Event Links
 
-- Event page: https://luma.com/q348gjch?tk=m2nWEP
-- Photos: https://drive.google.com/drive/folders/1lUtluhePzpZnFA4IkiiufjBY63xhLisA?usp=sharing
+- Event page: [Luma](https://luma.com/q348gjch?tk=m2nWEP)
+- Photos: [Goggle drive](https://drive.google.com/drive/folders/1lUtluhePzpZnFA4IkiiufjBY63xhLisA?usp=sharing)
