@@ -18,6 +18,8 @@ A collaborative event organized by [FOSS United Coimbatore](https://fossunited.o
 | ------------------------------------------------------------------- | --------------------------------------------------------------------- | --------- |
 | Improving App Performance Using Dev Tools                           | [Nareshkumar K](https://www.linkedin.com/in/nareshai/)                | —         |
 | Beyond Chatbots: Building Generative UIs with the Flutter GenUI SDK | [Balaji Venkatraman](https://www.linkedin.com/in/balaji-venkatraman/) | —         |
+| Namma wallet: App Introduction                                      | [Akash Senthil](https://www.linkedin.com/in/akashprofessionalcoder/)  | —         |
+
 
 > Resources will be updated as speakers submit them. See [CONTRIBUTING.md](../../../CONTRIBUTING.md) to add yours.
 
