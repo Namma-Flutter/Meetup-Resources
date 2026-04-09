@@ -31,4 +31,4 @@ A collaborative event organized by [FOSS United Coimbatore](https://fossunited.o
 ## Event Links
 
 - Event page: [Luma](https://luma.com/q348gjch?tk=m2nWEP)
-- Photos: [Goggle drive](https://drive.google.com/drive/folders/1lUtluhePzpZnFA4IkiiufjBY63xhLisA?usp=sharing)
+- Photos: [Google drive](https://drive.google.com/drive/folders/1lUtluhePzpZnFA4IkiiufjBY63xhLisA?usp=sharing)
