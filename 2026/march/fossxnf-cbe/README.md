@@ -14,11 +14,15 @@ A collaborative event organized by [FOSS United Coimbatore](https://fossunited.o
 
 ## Sessions
 
-| Session                                                             | Speaker                                                               | Resources                                                   |
-| ------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Improving App Performance Using Dev Tools                           | [Nareshkumar K](https://www.linkedin.com/in/nareshai/)                | —                                                           |
-| Beyond Chatbots: Building Generative UIs with the Flutter GenUI SDK | [Balaji Venkatraman](https://www.linkedin.com/in/balaji-venkatraman/) | —                                                           |
-| Namma wallet: App Introduction                                      | [Akash Senthil](https://www.linkedin.com/in/akashprofessionalcoder/)  | [Slides](namma-wallet_akashsenthil/namma_wallet_slides.pdf) |
+| Session                                                                               | Speaker                                                                                                        | Resources                                                   |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Inside Tor: How Onion Routing Protects Privacy and What Its Network Really Looks Like | [Jashwanth Raghav](https://www.linkedin.com/in/jashwanth-raghav-5a9111313/)                                    | —                                                           |
+| Beyond Chatbots: Building Generative UIs with the Flutter GenUI SDK                   | [Balaji Venkatraman](https://www.linkedin.com/in/balaji-venkatraman/)                                          | —                                                           |
+| Namma wallet: App Introduction                                                        | [Akash Senthil](https://www.linkedin.com/in/akashprofessionalcoder/)                                           | [Slides](namma-wallet_akashsenthil/namma_wallet_slides.pdf) |
+| OpenSSF Scorecard - Security Scorecards for FOSS Projects                             | [Santhosh NC](https://www.linkedin.com/in/santhoshnc/)                                                         | —                                                           |
+| Improving App Performance Using Dev Tools                                             | [Nareshkumar K](https://www.linkedin.com/in/nareshai/)                                                         | —                                                           |
+| How we built our collegefest platform using FOSS tools                                | [Vishal D](https://www.linkedin.com/in/vishal-dhanasekaran/), [Anush M](https://www.linkedin.com/in/anushm55/) | —                                                           |
+
 
 > Resources will be updated as speakers submit them. See [CONTRIBUTING.md](../../../CONTRIBUTING.md) to add yours.
 
