@@ -44,10 +44,10 @@ event_resources/
 
 Use a short, lowercase, hyphen-separated identifier for the event.
 
-| Event                            | Slug              |
-| -------------------------------- | ----------------- |
-| FOSS x Namma Flutter, Coimbatore | `fossxnf-cbe`     |
-| Namma Flutter Meetup #5, Chennai | `nf-meetup-5-che` |
+| Event                               | Slug                |
+| ----------------------------------- | ------------------- |
+| FOSS x Namma Flutter, Coimbatore    | `fossxnf-cbe`       |
+| Namma Flutter Meetup #5, Chennai    | `nf-meetup-5-che`   |
 | Namma Flutter Jan Meetup, Bangalore | `nf-jan-meetup-blr` |
 
 ### Session folder (`{session-title_speaker-name}`)
@@ -85,7 +85,16 @@ cd event_resources
 
 ### 2. Create a branch
 
-Branch naming format: `{event-slug}/{session-title_speaker-name}`
+Use one of these branch naming formats depending on what you're doing:
+
+| Purpose                    | Format                                      | Example                                               |
+| -------------------------- | ------------------------------------------- | ----------------------------------------------------- |
+| Add session resources      | `{event-slug}/{session-title_speaker-name}` | `fossxnf-cbe/improving-app-performance_nareshkumar-k` |
+| Create a new event folder  | `create/{event-slug}`                       | `create/fossxnf-cbe`                                  |
+| Fix a broken link or typo  | `fix/{short-description}`                   | `fix/broken-link-fossxnf-cbe`                         |
+| Maintenance / housekeeping | `chore/{short-description}`                 | `chore/update-contributing-guide`                     |
+
+Rules: **lowercase**, **hyphens** between words, **no spaces or uppercase**.
 
 ```bash
 git checkout -b fossxnf-cbe/improving-app-performance_nareshkumar-k
@@ -117,10 +126,20 @@ Make sure the event's `README.md` lists your session. See the [Event README Temp
 
 ### 6. Commit and push
 
+Commit messages follow the format: **`<type>: <short description>`**
+
+| Type    | When to use                            | Example                                                  |
+| ------- | -------------------------------------- | -------------------------------------------------------- |
+| `add`   | Adding new session resources           | `add: improving app performance slides by nareshkumar-k` |
+| `feat`  | Creating a new event folder            | `feat: create fossxnf-cbe event`                         |
+| `fix`   | Fixing a broken link or typo           | `fix: correct speaker name in fossxnf-cbe README`        |
+| `chore` | Maintenance, formatting, minor updates | `chore: update session resources formatting`             |
+| `docs`  | Documentation-only changes             | `docs: add event README for fossxnf-cbe`                 |
+
 ```bash
 git add .
-git commit -m "add: <session title> resources by <speaker name>"
-git push origin fossxnf-cbe/nareshkumar-k
+git commit -m "add: improving app performance slides by nareshkumar-k"
+git push origin fossxnf-cbe/improving-app-performance_nareshkumar-k
 ```
 
 ### 7. Open a pull request
@@ -169,9 +188,22 @@ When creating a new event folder, add a `README.md` using this template:
 ## Pull Request Guidelines
 
 - One PR per event or session — keep PRs focused
-- PR title format: `add: <event/session description>`
-- Do not commit large binary files (>.5 MB) — link to external hosting instead
+- PR title format: `type: <short description>` (same types as commit messages)
+- Do not commit large binary files (> 15 MB) — link to external hosting instead
 - Make sure all links are working before submitting
+
+### Automated checks
+
+Every PR to `main` is automatically validated by GitHub Actions:
+
+| Check           | What it validates                                |
+| --------------- | ------------------------------------------------ |
+| Branch name     | Must match a valid pattern (see step 2 above)    |
+| PR title        | Must follow `<type>: <description>`              |
+| Commit messages | Every commit must follow `<type>: <description>` |
+| File sizes      | No file may exceed 5 MB                          |
+
+All checks must pass before a PR can be merged.
 
 ---
 
