@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check branch naming convention
+        env:
+          BRANCH= ${{ github.head_ref}}
         run: |
-          BRANCH="${{ github.head_ref }}"
+          BRANCH="${BRANCH}"
 
           # Valid patterns:
           #   {event-slug}/{session-title_speaker-name}   → fossxnf-cbe/improving-app-performance_nareshkumar-k
@@ -48,8 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check PR title format
+        env:
+          TITLE=${{ github.event.pull_request.title }}
         run: |
-          TITLE="${{ github.event.pull_request.title }}"
+          TITLE="${TITLE}"
 
           # Format: <type>: <description>
           # Types: add | feat | fix | chore | docs
@@ -138,7 +142,7 @@ jobs:
 
           if [ "$OVERSIZED" -eq 1 ]; then
             echo ""
-            echo "Files larger than 5 MB must be hosted externally."
+            echo "Files larger than 15 MB must be hosted externally."
             echo "Upload to Google Drive, GitHub Releases, or YouTube, then link from a README.md."
             exit 1
           fi

@@ -91,6 +91,7 @@ Use one of these branch naming formats depending on what you're doing:
 | -------------------------- | ------------------------------------------- | ----------------------------------------------------- |
 | Add session resources      | `{event-slug}/{session-title_speaker-name}` | `fossxnf-cbe/improving-app-performance_nareshkumar-k` |
 | Create a new event folder  | `create/{event-slug}`                       | `create/fossxnf-cbe`                                  |
+| Documentation              | `docs/{short-description}`                  | `docs/update-installation-guide`                      |
 | Fix a broken link or typo  | `fix/{short-description}`                   | `fix/broken-link-fossxnf-cbe`                         |
 | Maintenance / housekeeping | `chore/{short-description}`                 | `chore/update-contributing-guide`                     |
 
@@ -201,7 +202,7 @@ Every PR to `main` is automatically validated by GitHub Actions:
 | Branch name     | Must match a valid pattern (see step 2 above)    |
 | PR title        | Must follow `<type>: <description>`              |
 | Commit messages | Every commit must follow `<type>: <description>` |
-| File sizes      | No file may exceed 5 MB                          |
+| File sizes      | No file may exceed 15 MB                          |
 
 All checks must pass before a PR can be merged.
 
