@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Check PR title format
         env:
-          TITLE:${{ github.event.pull_request.title }}
+          TITLE: ${{ github.event.pull_request.title }}
         run: |
           TITLE="${TITLE}"
 
