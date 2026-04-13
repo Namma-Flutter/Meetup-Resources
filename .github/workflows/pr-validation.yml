@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check branch naming convention
         env:
-          BRANCH= ${{ github.head_ref}}
+          BRANCH: ${{ github.head_ref}}
         run: |
           BRANCH="${BRANCH}"
 
@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Check PR title format
         env:
-          TITLE=${{ github.event.pull_request.title }}
+          TITLE:${{ github.event.pull_request.title }}
         run: |
           TITLE="${TITLE}"
 
