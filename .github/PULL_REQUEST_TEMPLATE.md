@@ -14,7 +14,7 @@
 
 ## Checklist
 
-- [ ] +- [ ] Branch name follows one valid convention: `{event-slug}/{session-title_speaker-name}`, `create/{event-slug}`, `fix/{short-description}`, `chore/{short-description}`, or `docs/{short-description}`
+- [ ] Branch name follows one valid convention: `{event-slug}/{session-title_speaker-name}`, `create/{event-slug}`, `fix/{short-description}`, `chore/{short-description}`, or `docs/{short-description}`
 - [ ] PR title follows the format: `type: description` (types: `add`, `feat`, `fix`, `chore`, `docs`)
 - [ ] All commit messages follow the format: `type: description`
 - [ ] Session folder is named correctly: `{session-title_speaker-name}`
