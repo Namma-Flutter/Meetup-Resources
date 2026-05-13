@@ -1,0 +1,162 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  validate-branch-name:
+    name: Branch Name
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch naming convention
+        env:
+          BRANCH: "${{ github.head_ref }}"
+        run: |
+          BRANCH="${BRANCH}"
+
+          # Valid patterns:
+          #   {event-slug}/{session-title_speaker-name}   → fossxnf-cbe/improving-app-performance_nareshkumar-k
+          #   create/{event-slug}                         → create/fossxnf-cbe
+          #   fix/{description}                           → fix/broken-link-fossxnf-cbe
+          #   chore/{description}                         → chore/update-readme
+          #   docs/{description}                          → docs/add-contributing-guide
+
+          VALID_SESSION="^[a-z0-9-]+/[a-z0-9-]+_[a-z0-9-]+$"
+          VALID_PREFIX="^(create|fix|chore|docs)/[a-z0-9-]+$"
+
+          if echo "$BRANCH" | grep -qE "$VALID_SESSION" || echo "$BRANCH" | grep -qE "$VALID_PREFIX"; then
+            echo "✓ Branch name '$BRANCH' is valid."
+          else
+            echo "✗ Branch name '$BRANCH' does not follow the naming convention."
+            echo ""
+            echo "Valid formats:"
+            echo "  {event-slug}/{session-title_speaker-name}"
+            echo "    → fossxnf-cbe/improving-app-performance_nareshkumar-k"
+            echo "  create/{event-slug}"
+            echo "    → create/fossxnf-cbe"
+            echo "  fix/{description}"
+            echo "    → fix/broken-link-fossxnf-cbe"
+            echo "  chore/{description}"
+            echo "    → chore/update-readme"
+            echo ""
+            echo "Rules: lowercase, hyphens only, no spaces or uppercase letters."
+            exit 1
+          fi
+
+  validate-pr-title:
+    name: PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR title format
+        env:
+          TITLE: "${{ github.event.pull_request.title }}"
+        run: |
+          TITLE="${TITLE}"
+
+          # Format: <type>: <description>
+          # Types: add | feat | fix | chore | docs
+          if echo "$TITLE" | grep -qE '^(add|feat|fix|chore|docs): .+'; then
+            echo "✓ PR title is valid: '$TITLE'"
+          else
+            echo "✗ PR title does not follow the convention: '$TITLE'"
+            echo ""
+            echo "Format:  <type>: <short description>"
+            echo "Types:   add | feat | fix | chore | docs"
+            echo ""
+            echo "Examples:"
+            echo "  add: improving app performance slides by nareshkumar-k"
+            echo "  feat: create fossxnf-cbe event"
+            echo "  fix: broken link in fossxnf-cbe README"
+            echo "  chore: update session resources formatting"
+            exit 1
+          fi
+
+  validate-commit-messages:
+    name: Commit Messages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check commit message format
+        run: |
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+
+          # Fallback to merge-base if base SHA is unavailable (e.g., force-push race)
+          if ! git cat-file -e "$BASE" 2>/dev/null; then
+            BASE=$(git merge-base "$HEAD" origin/main)
+          fi
+
+          INVALID=0
+          while IFS= read -r msg; do
+            if echo "$msg" | grep -qE '^(add|feat|fix|chore|docs): .+'; then
+              echo "✓ $msg"
+            else
+              echo "✗ $msg"
+              INVALID=1
+            fi
+          done < <(git log --format="%s" "$BASE".."$HEAD")
+
+          if [ "$INVALID" -eq 1 ]; then
+            echo ""
+            echo "All commit messages must follow:  <type>: <description>"
+            echo "Types: add | feat | fix | chore | docs"
+            echo ""
+            echo "Examples:"
+            echo "  add: namma-wallet presentation by akashsenthil"
+            echo "  feat: create fossxnf-cbe event"
+            echo "  fix: correct speaker name in README"
+            exit 1
+          fi
+
+          echo ""
+          echo "All commit messages are valid."
+
+  validate-file-sizes:
+    name: File Sizes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for large binary files
+        run: |
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+
+          # Fallback to merge-base if base SHA is unavailable (e.g., force-push race)
+          if ! git cat-file -e "$BASE" 2>/dev/null; then
+            BASE=$(git merge-base "$HEAD" origin/main)
+          fi
+
+          MAX_BYTES=$((15 * 1024 * 1024))  # 15 MB
+
+          OVERSIZED=0
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then
+              SIZE=$(wc -c < "$file")
+              if [ "$SIZE" -gt "$MAX_BYTES" ]; then
+                SIZE_KB=$((SIZE / 1024))
+                echo "✗ ${SIZE_KB} KB  →  $file"
+                OVERSIZED=1
+              else
+                SIZE_KB=$((SIZE / 1024))
+                echo "✓ ${SIZE_KB} KB  →  $file"
+              fi
+            fi
+          done < <(git diff --name-only "$BASE" "$HEAD")
+
+          if [ "$OVERSIZED" -eq 1 ]; then
+            echo ""
+            echo "Files larger than 15 MB must be hosted externally."
+            echo "Upload to Google Drive, GitHub Releases, or YouTube, then link from a README.md."
+            exit 1
+          fi
+
+          echo ""
+          echo "All files are within the 15 MB size limit."
