@@ -4,4 +4,4 @@
 
 ## Resources
 
-- Live Demo: [From App to Assitant - Demo](https://agentic-flutter-apps.netlify.app/)
+- Live Demo: [From App to Assistant - Demo](https://agentic-flutter-apps.netlify.app/)
