@@ -48,6 +48,7 @@ Each event folder contains a `README.md` that lists all sessions and speakers. R
 | Year | Month | Event                                                          | Location   | Sessions |
 | ---- | ----- | -------------------------------------------------------------- | ---------- | -------- |
 | 2026 | March | [FOSS x Namma Flutter — Coimbatore](./2026/march/fossxnf-cbe/) | Coimbatore | 2        |
+| 2026 | July  | [Flutter Flakes Bangalore x Namma Flutter](./2026/july/nfxff-blr/) | Bangalore  | 4        |
 
 > New event resources are added after every meetup. See [CONTRIBUTING.md](./CONTRIBUTING.md) to add yours.
 
