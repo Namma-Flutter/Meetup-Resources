@@ -63,7 +63,7 @@ jobs:
             echo "✗ PR title does not follow the convention: '$TITLE'"
             echo ""
             echo "Format:  <type>: <short description>"
-            echo "Types:   add | feat | fix | chore | docs"
+            echo "Types:   add | feat | fix | chore | docs | merge| Merge "
             echo ""
             echo "Examples:"
             echo "  add: improving app performance slides by nareshkumar-k"
@@ -93,7 +93,7 @@ jobs:
 
           INVALID=0
           while IFS= read -r msg; do
-            if echo "$msg" | grep -qE '^(add|feat|fix|chore|docs): .+'; then
+            if echo "$msg" | grep -qE '^(add|feat|fix|chore|docs|merge|Merge): .+'; then
               echo "✓ $msg"
             else
               echo "✗ $msg"
@@ -104,7 +104,7 @@ jobs:
           if [ "$INVALID" -eq 1 ]; then
             echo ""
             echo "All commit messages must follow:  <type>: <description>"
-            echo "Types: add | feat | fix | chore | docs"
+            echo "Types: add | feat | fix | chore | docs | merge| Merge "
             echo ""
             echo "Examples:"
             echo "  add: namma-wallet presentation by akashsenthil"
